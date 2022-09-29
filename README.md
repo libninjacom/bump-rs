@@ -20,7 +20,7 @@
 
 </p>
 
-Bump client, generated from the OpenAPI spec.
+[Bump](https://www.bump.sh) client, generated from the OpenAPI spec.
 
 # Usage
 
