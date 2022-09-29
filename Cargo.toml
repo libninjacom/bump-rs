@@ -1,0 +1,108 @@
+[package]
+name = "bump-api"
+edition = "2021"
+version = "0.1.0"
+description = "Bump client, generated from the OpenAPI spec."
+homepage = "https://github.com/libninjacom/bump-rs"
+documentation = "https://docs.rs/bump-api"
+readme = "README.md"
+license = "MIT"
+repository = "https://github.com/libninjacom/bump-rs"
+
+[workspace]
+members = []
+
+[dependencies]
+anyhow = "1.0.57"
+httpclient = "0.6.0"
+serde_json = "1.0.81"
+
+[dependencies.serde]
+version = "1.0.137"
+features = ["derive"]
+optional = false
+[dev-dependencies.tokio]
+version = "1.18.2"
+features = ["full"]
+optional = false
+
+[lib]
+path = "src/lib.rs"
+name = "bump_api"
+plugin = false
+proc-macro = false
+edition = "2021"
+crate-type = ["rlib"]
+required-features = []
+
+[[example]]
+path = "examples/get_diffs_by_id.rs"
+name = "get_diffs_by_id"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/get_hubs_by_hub_id_or_slug.rs"
+name = "get_hubs_by_hub_id_or_slug"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/get_ping.rs"
+name = "get_ping"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/get_versions_by_version_id.rs"
+name = "get_versions_by_version_id"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/post_diffs.rs"
+name = "post_diffs"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/post_previews.rs"
+name = "post_previews"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/post_validations.rs"
+name = "post_validations"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/post_versions.rs"
+name = "post_versions"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/put_previews_by_preview_id.rs"
+name = "put_previews_by_preview_id"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
