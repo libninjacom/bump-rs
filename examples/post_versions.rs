@@ -5,18 +5,18 @@ use bump_api::request::PostVersionsRequired;
 async fn main() {
     let client = BumpClient::from_env();
     let args = PostVersionsRequired {
-        documentation: "your documentation",
+        documentation_name: "your documentation name",
+        hub: "your hub",
+        references: vec![
+            Reference { content : Some("your content".to_owned()), location :
+            Some("your location".to_owned()) }
+        ],
         auto_create_documentation: true,
-        unpublished: true,
+        documentation: "your documentation",
+        definition: "your definition",
         branch_name: "your branch name",
         previous_version_id: "your previous version id",
-        hub: "your hub",
-        documentation_name: "your documentation name",
-        definition: "your definition",
-        references: vec![
-            Reference { location : Some("your location".to_owned()), content :
-            Some("your content".to_owned()) }
-        ],
+        unpublished: true,
     };
     let response = client.post_versions(args).send().await.unwrap();
     println!("{:#?}", response);

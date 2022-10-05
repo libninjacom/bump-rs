@@ -8,8 +8,8 @@ async fn main() {
         .post_previews(definition)
         .references(
             vec![
-                Reference { location : Some("your location".to_owned()), content :
-                Some("your content".to_owned()) }
+                Reference { content : Some("your content".to_owned()), location :
+                Some("your location".to_owned()) }
             ],
         )
         .send()

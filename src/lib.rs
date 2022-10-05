@@ -9,37 +9,36 @@ use crate::model::*;
 
 pub struct BumpClient {
     pub(crate) client: httpclient::Client,
-    authentication: Option<BumpAuthentication>,
+    authentication: BumpAuthentication,
 }
 impl BumpClient {
     pub fn from_env() -> Self {
-        let url = std::env::var("BUMP_BASE_URL")
-            .expect("Missing environment variable BUMP_BASE_URL");
-        Self::new(&url)
+        let url = "https://bump.sh/api/v1".to_string();
+        Self {
+            client: httpclient::Client::new(Some(url)),
+            authentication: bump_authentication::from_env(),
+        }
     }
 }
 impl BumpClient {
-    pub fn new(url: &str) -> Self {
+    pub fn new(url: &str, authentication: BumpAuthentication) -> Self {
         let client = httpclient::Client::new(Some(url.to_string()));
-        let authentication = None;
         Self { client, authentication }
     }
     pub fn with_authentication(mut self, authentication: BumpAuthentication) -> Self {
-        self.authentication = Some(authentication);
+        self.authentication = authentication;
         self
     }
     pub fn authenticate<'a>(
         &self,
         mut r: httpclient::RequestBuilder<'a>,
     ) -> httpclient::RequestBuilder<'a> {
-        if let Some(ref authentication) = self.authentication {
-            match authentication {
-                BumpAuthentication::AuthorizationToken { authorization_token } => {
-                    r = r.token_auth(authorization_token);
-                }
-                BumpAuthentication::BasicToken { basic_token } => {
-                    r = r.basic_auth(basic_token);
-                }
+        match &self.authentication {
+            BumpAuthentication::AuthorizationToken { authorization_token } => {
+                r = r.token_auth(authorization_token);
+            }
+            BumpAuthentication::BasicToken { basic_token } => {
+                r = r.basic_auth(basic_token);
             }
         }
         r
