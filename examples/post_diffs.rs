@@ -10,15 +10,15 @@ async fn main() {
         .previous_definition("your previous definition")
         .previous_references(
             vec![
-                Reference { content : Some("your content".to_owned()), location :
-                Some("your location".to_owned()) }
+                Reference { location : Some("your location".to_owned()), content :
+                Some("your content".to_owned()) }
             ],
         )
         .definition("your definition")
         .references(
             vec![
-                Reference { content : Some("your content".to_owned()), location :
-                Some("your location".to_owned()) }
+                Reference { location : Some("your location".to_owned()), content :
+                Some("your content".to_owned()) }
             ],
         )
         .expires_at("your expires at")

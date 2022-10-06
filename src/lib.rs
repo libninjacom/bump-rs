@@ -16,7 +16,7 @@ impl BumpClient {
         let url = "https://bump.sh/api/v1".to_string();
         Self {
             client: httpclient::Client::new(Some(url)),
-            authentication: bump_authentication::from_env(),
+            authentication: BumpAuthentication::from_env(),
         }
     }
 }

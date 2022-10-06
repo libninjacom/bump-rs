@@ -5,16 +5,16 @@ use bump_api::request::PostValidationsRequired;
 async fn main() {
     let client = BumpClient::from_env();
     let args = PostValidationsRequired {
-        documentation: "your documentation",
-        references: vec![
-            Reference { content : Some("your content".to_owned()), location :
-            Some("your location".to_owned()) }
-        ],
         hub: "your hub",
-        documentation_name: "your documentation name",
+        definition: "your definition",
         auto_create_documentation: true,
         url: "your url",
-        definition: "your definition",
+        documentation: "your documentation",
+        documentation_name: "your documentation name",
+        references: vec![
+            Reference { location : Some("your location".to_owned()), content :
+            Some("your content".to_owned()) }
+        ],
     };
     let response = client.post_validations(args).send().await.unwrap();
     println!("{:#?}", response);

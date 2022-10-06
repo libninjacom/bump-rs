@@ -9,8 +9,8 @@ async fn main() {
         .put_previews_by_preview_id(preview_id, definition)
         .references(
             vec![
-                Reference { content : Some("your content".to_owned()), location :
-                Some("your location".to_owned()) }
+                Reference { location : Some("your location".to_owned()), content :
+                Some("your content".to_owned()) }
             ],
         )
         .send()
